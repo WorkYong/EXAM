@@ -35,7 +35,7 @@ class ActorView(View): # 주인의 정보를 쉽게 넣어본다
 
 
 class MovieView(View):
-    def post(self, request):					# http POST 127.0.0.1:8000/actor/movie/ title=내인생이드라마 release_date=1991-11-04 running_time=29385723
+    def post(self, request):					
         data = json.loads(request.body)
         movie = Movie.objects.create(
             title = data['title'],
@@ -45,7 +45,7 @@ class MovieView(View):
 
         return JsonResponse({'MASSAGE':'SUCCESS'}, status=201)    
 
-    def get(self, request):					# http GET 127.0.0.1:8000/actor/movie/
+    def get(self, request):					# http GET 127.0.0.1:8000/actors/movies/
         movies = Movie.objects.all()
         results = []
         for movie in movies:
